@@ -1,0 +1,34 @@
+@import "variables";
+
+.header {
+  nav {
+    padding: 24px;
+  }
+
+  &__logo {
+    img {
+    }
+  }
+
+  // Mobile hamburger menu
+  &__menu {
+    // Lines for hamburger menu icon
+    > span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background-color: $darkBlue;
+
+      // Apply this to all children expect last child
+      &:not(:last-child) {
+        margin-bottom: 3px;
+      }
+    }
+  }
+
+  &__links {
+    a {
+      font-size: $font-small;
+    }
+  }
+}
