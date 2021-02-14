@@ -60,6 +60,7 @@
   bottom: 0px;
   left: 0px;
   background-image: linear-gradient(#2d314d, transparent);
+  z-index: 2;
 }
 .header__toggle > span {
   display: block;
@@ -109,6 +110,7 @@
   padding: 18px 0px;
   background-color: #ffffff;
   border-radius: 5px;
+  z-index: 3;
 }
 .header__menu a {
   display: block;

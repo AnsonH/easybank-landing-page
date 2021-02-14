@@ -35,6 +35,7 @@
     bottom: 0px;
     left: 0px;
     background-image: linear-gradient(v.$darkBlue, transparent);
+    z-index: 2;
   }
 
   // Mobile hamburger menu icon
@@ -102,6 +103,7 @@
     padding: 18px 0px;
     background-color: v.$white;
     border-radius: 5px;
+    z-index: 3; // Menu above the hero section images
 
     a {
       display: block;
