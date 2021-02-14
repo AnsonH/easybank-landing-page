@@ -1,3 +1,6 @@
+@use "variables" as v;
+@use "mixins";
+
 html {
   font-size: 100%;
   box-sizing: border-box;
@@ -12,10 +15,10 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-size: $font-med;
+  font-size: v.$font-med;
   line-height: 1.3;
   font-family: "Public Sans", sans-serif;
-  color: $grayishBlue;
+  color: v.$grayishBlue;
 }
 
 // Remove underline for links
@@ -23,7 +26,7 @@ a,
 a:visited,
 a:hover {
   text-decoration: none;
-  color: $grayishBlue;
+  color: v.$grayishBlue;
 }
 
 // Flex box
@@ -41,5 +44,42 @@ a:hover {
 
   &-ai-c {
     align-items: center;
+  }
+}
+
+// Buttons
+button,
+.button {
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: 0;
+  cursor: pointer;
+  background: linear-gradient(to right, v.$limeGreen, v.$brightCyan);
+  outline: none; // Remove black border when clicked
+  color: white;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: v.$font-small;
+  transition: opacity 150ms ease-in-out;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+// Visibility
+.hide-for-mobile {
+  // Hide in tablet and mobile for vw < medium (1024px)
+  // ie. @media (max-width: 1023px)
+  @include mixins.breakpoint-down(medium) {
+    display: none;
+  }
+}
+
+.hide-for-desktop {
+  // Hide in desktop for vw > large (1400px)
+  // ie. @media (min-width: 1023px)
+  @include mixins.breakpoint-up(large) {
+    display: none;
   }
 }

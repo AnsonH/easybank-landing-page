@@ -1,8 +1,8 @@
-@import "variables";
+@use "variables" as v;
 
 .header {
   nav {
-    padding: 24px;
+    padding: 20px 24px;
   }
 
   &__logo {
@@ -17,7 +17,7 @@
       display: block;
       width: 26px;
       height: 2px;
-      background-color: $darkBlue;
+      background-color: v.$darkBlue;
 
       // Apply this to all children expect last child
       &:not(:last-child) {
@@ -28,7 +28,37 @@
 
   &__links {
     a {
-      font-size: $font-small;
+      position: relative; // Since &::before uses absolute positioning
+      font-size: v.$font-small;
+      transition: color 150ms ease-in-out;
+
+      &:not(:last-child) {
+        margin-right: 32px;
+      }
+
+      // Green underline when hover on links
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        display: block;
+        height: 5px;
+        background: linear-gradient(to right, v.$limeGreen, v.$brightCyan);
+        opacity: 0;
+        left: 0;
+        right: 0;
+        bottom: -30px;
+        transition: opacity 150ms ease-in-out;
+        pointer-events: none; // Prevent bottom bar to show up when on hover bottom of navbar
+      }
+
+      &:hover {
+        color: v.$darkBlue;
+
+        &::before {
+          opacity: 1;
+        }
+      }
     }
   }
 }

@@ -1,14 +1,12 @@
 html {
   font-size: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
@@ -28,45 +26,88 @@ a:hover {
 }
 
 .flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .flex-jc-sb {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
-
 .flex-jc-c {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
+}
+.flex-ai-c {
+  align-items: center;
 }
 
-.flex-ai-c {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+button,
+.button {
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: 0;
+  cursor: pointer;
+  background: linear-gradient(to right, #31d35c, #2bb7da);
+  outline: none;
+  color: white;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 0.875rem;
+  transition: opacity 150ms ease-in-out;
+}
+button:hover,
+.button:hover {
+  opacity: 0.75;
+}
+
+@media (max-width: 1023px) {
+  .hide-for-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hide-for-desktop {
+    display: none;
+  }
 }
 
 .header nav {
-  padding: 24px;
+  padding: 20px 24px;
 }
-
 .header__menu > span {
   display: block;
   width: 26px;
   height: 2px;
   background-color: #2d314d;
 }
-
 .header__menu > span:not(:last-child) {
   margin-bottom: 3px;
 }
-
 .header__links a {
+  position: relative;
   font-size: 0.875rem;
+  transition: color 150ms ease-in-out;
 }
+.header__links a:not(:last-child) {
+  margin-right: 32px;
+}
+.header__links a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  display: block;
+  height: 5px;
+  background: linear-gradient(to right, #31d35c, #2bb7da);
+  opacity: 0;
+  left: 0;
+  right: 0;
+  bottom: -30px;
+  transition: opacity 150ms ease-in-out;
+  pointer-events: none;
+}
+.header__links a:hover {
+  color: #2d314d;
+}
+.header__links a:hover::before {
+  opacity: 1;
+}
+
 /*# sourceMappingURL=style.css.map */
