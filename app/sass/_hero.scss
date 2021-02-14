@@ -1,0 +1,116 @@
+@use "variables" as v;
+@use "mixins";
+
+.hero {
+  background-color: v.$veryLightGray;
+
+  .container {
+    @include mixins.breakpoint-up(large) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  // BG image for mobile & hide in desktop
+  &__image {
+    position: relative; // Since &::before uses absolute
+    min-height: 280px; // Give a height to the div!
+
+    background-image: url("/images/bg-intro-mobile.svg");
+    background-size: cover; // Always fit whole div & maintain aspect ratio
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    // Increase height of image section a bit in tablet mode
+    @include mixins.breakpoint-up(medium) {
+      min-height: 400px;
+      background-position: center 67%;
+    }
+
+    @include mixins.breakpoint-up(large) {
+      flex: 3; // Make it occupy 3 / 5 of space
+      order: 2; // Since the img is written first in HTML, we set order of 2 to make it appear at right
+      min-height: 655px;
+      // background-image: url("/images/bg-intro-desktop.svg");
+      // background-position: left center;
+      background-image: none; // Hide the mobile background
+    }
+
+    // Desktop background image
+    &::before {
+      content: ""; // DON"T MISS!
+      height: 100%;
+      width: 100%;
+      position: absolute; // Need to take out of flow since it overlaps with next section
+      background-image: none; // Don't show BG in mobile
+
+      @include mixins.breakpoint-up(large) {
+        background-image: url("/images/bg-intro-desktop.svg");
+        background-repeat: no-repeat;
+
+        opacity: 1;
+        width: 150%; // Set width > 100% so that it spans outside its container
+        background-size: 116%;
+        background-position: 0% 90%;
+      }
+    }
+
+    // Phones images
+    &::after {
+      content: ""; // DON"T MISS!
+      height: 100%;
+      width: 100%;
+      position: absolute; // Need to take out of flow since it overlaps with next section
+
+      background-image: url("/images/image-mockups.png");
+      background-size: 93%; // Zoom out the BG img a bit
+      background-repeat: no-repeat;
+      background-position: center bottom;
+
+      // Zoom out a bit in tablet mode
+      @include mixins.breakpoint-up(medium) {
+        background-size: 52%;
+      }
+
+      @include mixins.breakpoint-up(large) {
+        width: 120%;
+        height: 122%;
+        background-size: 94%;
+        background-position: center 150%;
+        left: 22%;
+      }
+    }
+  }
+
+  &__text {
+    text-align: center; // Mobile-first style
+
+    @include mixins.breakpoint-up(large) {
+      flex: 2; // Make it occupy 2 / 5 of space
+      order: 1;
+      text-align: left;
+    }
+
+    h1 {
+      margin-bottom: 24px;
+      color: v.$darkBlue;
+      font-weight: 300;
+      font-size: 30px;
+      line-height: 1.15;
+
+      @include mixins.breakpoint-up(large) {
+        font-size: v.$font-xlg;
+      }
+    }
+
+    p {
+      margin-bottom: 36px;
+      font-size: v.$font-small;
+      line-height: 1.5;
+
+      @include mixins.breakpoint-up(large) {
+        font-size: v.$font-med;
+      }
+    }
+  }
+}

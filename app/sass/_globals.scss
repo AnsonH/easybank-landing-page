@@ -34,6 +34,12 @@ a:hover {
   color: v.$grayishBlue;
 }
 
+h1,
+h2,
+h3 {
+  margin-top: 0;
+}
+
 // Flex box
 .flex {
   display: flex;
@@ -55,6 +61,7 @@ a:hover {
 // Buttons
 button,
 .button {
+  display: inline-block;
   padding: 12px 30px;
   border-radius: 30px;
   border: 0;
@@ -69,6 +76,7 @@ button,
 
   &:hover {
     opacity: 0.75;
+    color: v.$white;
   }
 }
 
@@ -90,8 +98,37 @@ button,
 }
 
 // Spacing
-
-// Gives overall podding
 .container {
-  padding: 0px 24px;
+  max-width: 1113px;
+  margin: 0 auto;
+
+  &--pall {
+    padding: 36px 24px;
+  }
+
+  &--px {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  &--py {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+
+  &--pt {
+    padding-top: 36px;
+  }
+
+  &--pr {
+    padding-right: 24px;
+  }
+
+  &--pb {
+    padding-bottom: 36px;
+  }
+
+  &--pl {
+    padding-left: 24px;
+  }
 }
