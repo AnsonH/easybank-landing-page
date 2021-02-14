@@ -12,7 +12,7 @@
       animation: fade-in 200ms ease-in-out forwards;
     }
 
-    .header__menu {
+    .header__toggle {
       > span:first-child {
         transform: rotate(45deg);
       }
@@ -29,18 +29,16 @@
 
   // Overlay behind the modal menu in mobile mode
   .overlay {
-    // NOTE: Since we can't animate `display`, we use `visibility`
-    visibility: hidden;
     position: fixed;
     top: 60px;
     right: 0px;
     bottom: 0px;
     left: 0px;
     background-image: linear-gradient(v.$darkBlue, transparent);
-    opacity: 0.7;
   }
 
-  &__menu {
+  // Mobile hamburger menu icon
+  &__toggle {
     // Lines for hamburger menu icon
     > span {
       display: block;
@@ -51,7 +49,7 @@
       transform-origin: 3px 1px; // For hamburger menu to cross
 
       // Apply this to all children expect last child
-      // .header__menu > span:not(:last-child)
+      // .header__toggle > span:not(:last-child)
       &:not(:last-child) {
         margin-bottom: 5px;
       }
@@ -91,6 +89,25 @@
           opacity: 1;
         }
       }
+    }
+  }
+
+  // Mobile menu modal
+  &__menu {
+    position: absolute;
+    width: calc(100% - 24px * 2);
+    left: 50%; // center horizontally
+    transform: translateX(-50%); // center horizontally
+    margin-top: 24px;
+    padding: 18px 0px;
+    background-color: v.$white;
+    border-radius: 5px;
+
+    a {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      color: v.$darkBlue;
     }
   }
 }
