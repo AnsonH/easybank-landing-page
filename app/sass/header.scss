@@ -1,16 +1,45 @@
 @use "variables" as v;
+@import "animations";
 
 .header {
   nav {
     padding: 20px 24px;
   }
 
-  &__logo {
-    img {
+  // (Mobile) Hamburger open styles  (.header.open)
+  &.open {
+    .overlay {
+      animation: fade-in 200ms ease-in-out forwards;
+    }
+
+    .header__menu {
+      > span:first-child {
+        transform: rotate(45deg);
+      }
+
+      > span:nth-child(2) {
+        opacity: 0;
+      }
+
+      > span:last-child {
+        transform: rotate(-45deg);
+      }
     }
   }
 
-  // Mobile hamburger menu
+  // Overlay behind the modal menu in mobile mode
+  .overlay {
+    // NOTE: Since we can't animate `display`, we use `visibility`
+    visibility: hidden;
+    position: fixed;
+    top: 60px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: linear-gradient(v.$darkBlue, transparent);
+    opacity: 0.7;
+  }
+
   &__menu {
     // Lines for hamburger menu icon
     > span {
@@ -18,10 +47,13 @@
       width: 26px;
       height: 2px;
       background-color: v.$darkBlue;
+      transition: all 150ms ease-in-out;
+      transform-origin: 3px 1px; // For hamburger menu to cross
 
       // Apply this to all children expect last child
+      // .header__menu > span:not(:last-child)
       &:not(:last-child) {
-        margin-bottom: 3px;
+        margin-bottom: 5px;
       }
     }
   }
