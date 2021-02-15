@@ -1,0 +1,133 @@
+@use "variables" as v;
+@use "mixins";
+
+.footer {
+  padding: 40px;
+  background-color: v.$darkBlue;
+  color: v.$white;
+  font-size: v.$font-small;
+  text-align: center;
+
+  .container {
+    // Use CSS Grid for desktop
+    @include mixins.breakpoint-up(large) {
+      display: grid;
+      grid-template-columns: repeat(3, 2fr) 3fr;
+      grid-template-rows: 1fr auto;
+      grid-template-areas:
+        "logo links1 links2 cta"
+        "social links1 links2 copyright";
+      justify-items: left;
+
+      font-size: 16px;
+      text-align: left;
+    }
+  }
+
+  a {
+    display: inline-block;
+    color: v.$white;
+    transition: 150ms;
+
+    &:hover {
+      color: v.$limeGreen;
+    }
+  }
+
+  &__logo {
+    // Add bottom margin only for tablet and mobile
+    @include mixins.breakpoint-down(medium) {
+      margin-bottom: 30px;
+    }
+
+    @include mixins.breakpoint-up(large) {
+      grid-area: logo; // No need wrap grid area name `logo` with string
+    }
+  }
+
+  &__social {
+    @include mixins.breakpoint-down(medium) {
+      margin-bottom: 30px;
+    }
+
+    @include mixins.breakpoint-up(large) {
+      grid-area: social;
+      align-self: end; // Align icons to bottom of grid
+    }
+
+    a {
+      display: inline-block;
+
+      &:not(last-child) {
+        margin-right: 16px;
+      }
+
+      svg path {
+        fill: v.$white;
+        transition: 150ms;
+      }
+
+      &:hover svg path {
+        fill: v.$limeGreen;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center; // ~ behave like inline block
+
+    @include mixins.breakpoint-up(large) {
+      align-items: start;
+    }
+
+    &.col1 {
+      @include mixins.breakpoint-up(large) {
+        grid-area: links1;
+      }
+    }
+
+    &.col2 {
+      @include mixins.breakpoint-down(medium) {
+        margin-bottom: 30px;
+      }
+
+      @include mixins.breakpoint-up(large) {
+        grid-area: links2;
+      }
+    }
+
+    a {
+      line-height: 2.25;
+    }
+  }
+
+  &__cta {
+    @include mixins.breakpoint-up(large) {
+      grid-area: cta;
+      justify-self: end; // Put items to right for this grid
+      text-align: right;
+    }
+
+    a.button {
+      transition: 150ms;
+
+      @include mixins.breakpoint-down(medium) {
+        margin-bottom: 30px;
+      }
+
+      &:hover {
+        color: v.$white;
+      }
+    }
+  }
+
+  &__copyright {
+    @include mixins.breakpoint-up(large) {
+      grid-area: copyright;
+      justify-self: end; // Move to right side
+      align-self: end; // Move to bottom
+    }
+  }
+}
