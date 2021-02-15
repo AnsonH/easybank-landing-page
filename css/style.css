@@ -304,7 +304,7 @@ button:hover,
 .hero__image {
   position: relative;
   min-height: 280px;
-  background-image: url("/images/bg-intro-mobile.svg");
+  background-image: url("../images/bg-intro-mobile.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -332,7 +332,7 @@ button:hover,
 }
 @media (min-width: 1024px) {
   .hero__image::before {
-    background-image: url("/images/bg-intro-desktop.svg");
+    background-image: url("../images/bg-intro-desktop.svg");
     background-repeat: no-repeat;
     opacity: 1;
     width: 163%;
@@ -345,7 +345,7 @@ button:hover,
   height: 100%;
   width: 100%;
   position: absolute;
-  background-image: url("/images/image-mockups.png");
+  background-image: url("../images/image-mockups.png");
   background-size: 93%;
   background-repeat: no-repeat;
   background-position: center bottom;
