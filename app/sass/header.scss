@@ -2,10 +2,10 @@
 @import "animations";
 
 .header {
-  // position: sticky;
-  // top: 0;
-  // background-color: v.$white;
-  // z-index: 999;
+  position: sticky;
+  top: 0;
+  background-color: v.$white;
+  z-index: 999;
 
   nav {
     padding: 20px 24px;

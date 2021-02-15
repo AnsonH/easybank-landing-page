@@ -38,6 +38,12 @@
   animation: fade-out 200ms ease-in-out forwards;
 }
 
+.header {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 999;
+}
 .header nav {
   padding: 20px 24px;
 }

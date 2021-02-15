@@ -130,4 +130,13 @@
       align-self: end; // Move to bottom
     }
   }
+
+  .attribution {
+    margin-top: 50px;
+    color: v.$white;
+
+    a {
+      color: v.$limeGreen;
+    }
+  }
 }
