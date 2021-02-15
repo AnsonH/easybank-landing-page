@@ -1,0 +1,72 @@
+@use "variables" as v;
+@use "mixins";
+
+.articles {
+  background-color: v.$veryLightGray;
+
+  &__grid {
+    display: grid; // CSS grid
+    gap: 25px; // Gap between grid items
+    grid-template-columns: 1fr; // Mobile only has 1 column
+
+    // Tablet size
+    @include mixins.breakpoint-up(medium) {
+      grid-template-columns: repeat(2, 1fr); // ie. "1fr 1fr" -> 2 cols
+      gap: 30px; // Gap between grid items
+    }
+
+    // Desktop size
+    @include mixins.breakpoint-up(large) {
+      grid-template-columns: repeat(4, 1fr); // 4 columns
+    }
+  }
+
+  &__item {
+    background-color: v.$white;
+    border-radius: 5px;
+    overflow: hidden; // Prevents the image from covering over the rounded corner
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+    transition: 150ms;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    &:hover .articles__title {
+      color: v.$limeGreen;
+    }
+  }
+
+  &__image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    height: 185px;
+
+    @include mixins.breakpoint-up(large) {
+      height: 200px;
+    }
+  }
+
+  &__text {
+    padding: 25px 25px 30px 25px;
+    font-size: 14px;
+
+    @include mixins.breakpoint-up(medium) {
+      padding: 30px 25px;
+    }
+  }
+
+  &__author {
+    font-size: 10px;
+    margin-bottom: 15px;
+  }
+
+  &__title {
+    font-size: 16px;
+    color: v.$darkBlue;
+    margin-bottom: 15px;
+    transition: 150ms;
+  }
+}

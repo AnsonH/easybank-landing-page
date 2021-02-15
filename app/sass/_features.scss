@@ -61,8 +61,5 @@
   &__description {
     font-size: v.$font-small;
     line-height: 1.5;
-
-    @include mixins.breakpoint-up(large) {
-    }
   }
 }
