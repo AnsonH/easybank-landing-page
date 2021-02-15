@@ -90,27 +90,5 @@
       order: 1;
       text-align: left;
     }
-
-    h1 {
-      margin-bottom: 24px;
-      color: v.$darkBlue;
-      font-weight: 300;
-      font-size: 30px;
-      line-height: 1.15;
-
-      @include mixins.breakpoint-up(large) {
-        font-size: v.$font-xlg;
-      }
-    }
-
-    p {
-      margin-bottom: 36px;
-      font-size: v.$font-small;
-      line-height: 1.5;
-
-      @include mixins.breakpoint-up(large) {
-        font-size: v.$font-med;
-      }
-    }
   }
 }

@@ -1,0 +1,68 @@
+@use "variables" as v;
+@use "mixins";
+
+.features {
+  background-color: v.$lightGrayishBlue;
+
+  &__intro {
+    margin-bottom: 35px;
+
+    @include mixins.breakpoint-up(large) {
+      width: 60%;
+      margin-bottom: 60px;
+    }
+  }
+
+  &__grid {
+    // Use flex-box for tablet and desktop
+    @include mixins.breakpoint-up(medium) {
+      display: flex;
+      flex-wrap: wrap; // Allow flex boxes to wrap to new line
+    }
+  }
+
+  &__item {
+    padding: 15px; // Use padding over margin for simplicity
+    text-align: center;
+
+    // Tablet mode
+    @include mixins.breakpoint-up(medium) {
+      // flex-grow: 1 --> Allowed to grow to fill the space
+      // flex-shrink: 0 --> Disallow shrinking??
+      // flex-basis: 50% --> Occupy 50% space by default (ie. take 2 columns)
+      flex: 1 0 50%;
+      text-align: left;
+    }
+
+    @include mixins.breakpoint-up(large) {
+      flex: 1;
+    }
+  }
+
+  &__icon {
+    margin-bottom: 25px;
+
+    @include mixins.breakpoint-up(large) {
+      margin-bottom: 44px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    font-size: 20px;
+    color: v.$darkBlue;
+
+    @include mixins.breakpoint-up(large) {
+      margin-bottom: 24px;
+      font-size: 24px;
+    }
+  }
+
+  &__description {
+    font-size: v.$font-small;
+    line-height: 1.5;
+
+    @include mixins.breakpoint-up(large) {
+    }
+  }
+}

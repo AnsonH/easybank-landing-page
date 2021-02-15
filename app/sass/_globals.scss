@@ -38,6 +38,38 @@ h1,
 h2,
 h3 {
   margin-top: 0;
+  line-height: 1.15;
+  font-weight: 400;
+  color: v.$darkBlue;
+}
+
+h1 {
+  margin-bottom: 24px;
+  font-size: 30px; // Default = Mobile size
+
+  @include mixins.breakpoint-up(large) {
+    font-size: v.$font-xlg;
+  }
+}
+
+h2 {
+  margin-bottom: 25px;
+  font-size: 24px; // Mobile size
+
+  @include mixins.breakpoint-up(large) {
+    font-size: 36px;
+    margin-bottom: 36px;
+  }
+}
+
+p {
+  margin-bottom: 36px;
+  font-size: v.$font-small;
+  line-height: 1.5;
+
+  @include mixins.breakpoint-up(large) {
+    font-size: v.$font-med;
+  }
 }
 
 // Flex box
@@ -103,7 +135,11 @@ button,
   margin: 0 auto;
 
   &--pall {
-    padding: 36px 24px;
+    padding: 70px 24px;
+
+    @include mixins.breakpoint-up(large) {
+      padding: 96px 24px;
+    }
   }
 
   &--px {
@@ -112,12 +148,21 @@ button,
   }
 
   &--py {
-    padding-top: 36px;
-    padding-bottom: 36px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+
+    @include mixins.breakpoint-up(large) {
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
   }
 
   &--pt {
-    padding-top: 36px;
+    padding-top: 70px;
+
+    @include mixins.breakpoint-up(large) {
+      padding-top: 96px;
+    }
   }
 
   &--pr {
@@ -125,7 +170,11 @@ button,
   }
 
   &--pb {
-    padding-bottom: 36px;
+    padding-bottom: 70px;
+
+    @include mixins.breakpoint-up(large) {
+      padding-bottom: 96px;
+    }
   }
 
   &--pl {
